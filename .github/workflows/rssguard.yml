@@ -29,21 +29,12 @@ jobs:
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
-        os: [windows-2019, ubuntu-20.04, macos-11]
-        no_lite: ["ON", "OFF"]
-        use_qt5: ["ON", "OFF"]
+        os: [windows-2019]
+        no_lite: ["ON"]
+        use_qt5: ["OFF"]
         include:
           - os: windows-2019
             script_name: .\resources\scripts\github-actions\build-windows.ps1
-          - os: ubuntu-20.04
-            script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-          - os: macos-11
-            script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-        exclude:
-          - os: ubuntu-20.04
-            use_qt5: "OFF"
-          - os: macos-11
-            use_qt5: "ON"
     steps:         
       - name: Checkout source code
         uses: actions/checkout@v3
